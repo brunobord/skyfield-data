@@ -19,3 +19,26 @@ Several issues are raised by these data files:
 This way, you could **install or upgrade** this data package via ``pip``.
 
 Once all the files are on your disk space, you can instantiate your ``skyfield`` loader pointing at their path, without having to worry about anything.
+
+## Usage
+
+Once you have installed ``skyfield_data``, you may create a dedicated loader with the following code:
+
+```python
+from skyfield_data import get_skyfield_data_path
+from skyfield.api import Loader
+load = Loader(get_skyfield_data_path())
+planets = load('de421.bsp')
+```
+
+## Copyright
+
+### Data files
+
+* `de421.bsp` is provided by the *Jet Propulsion Laboratory*,
+* `deltat.data` and `deltat.preds` are provided by the *United States Naval Observatory*,
+* `Leap_Second.dat` is provided by the *International Earth Rotation and Reference Systems Service*.
+
+### Software
+
+This Python Package code is published under the terms of the MIT license. See the ``COPYING`` file for more details.
