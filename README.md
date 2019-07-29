@@ -31,6 +31,10 @@ load = Loader(get_skyfield_data_path())
 planets = load('de421.bsp')
 ```
 
+## Developers
+
+We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
+
 ## Copyright
 
 ### Data files
