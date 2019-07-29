@@ -13,4 +13,4 @@ clean:
 	rm -f skyfield_data/data/*
 
 package:
-	python3 setup.py sdist
+	python3 setup.py sdist bdist_wheel

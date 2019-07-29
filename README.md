@@ -22,13 +22,20 @@ Once all the files are on your disk space, you can instantiate your ``skyfield``
 
 ## Usage
 
-Once you have installed ``skyfield_data``, you may create a dedicated loader with the following code:
+Install the packages using:
+
+```sh
+pip install skyfield skyfield-data
+```
+
+To create a custom Skyfield loader, use the following code:
 
 ```python
 from skyfield_data import get_skyfield_data_path
 from skyfield.api import Loader
 load = Loader(get_skyfield_data_path())
-planets = load('de421.bsp')
+planets = load('de421.bsp')  # this command won't download this file
+ts = load.timescale()  # this command won't download the deltat + Leap Second files
 ```
 
 ## Developers
