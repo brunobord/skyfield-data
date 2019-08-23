@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 0.0.2 (2019-08-23)
 
 * Document the "Advanced" usage, with the ``expire`` option for the Loader.
