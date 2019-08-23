@@ -1,6 +1,6 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 0.0.2 (2019-08-23)
 
 * Document the "Advanced" usage, with the ``expire`` option for the Loader.
 * Ensure it's Python 2 compatible, since ``skyfield`` is compatible with Python 2.6/2.7.
