@@ -38,6 +38,13 @@ planets = load('de421.bsp')  # this command won't download this file
 ts = load.timescale()  # this command won't download the deltat + Leap Second files
 ```
 
+If you want to make sure that the data files would **never** be downloaded, you can also use the ``expire`` option like this:
+
+```python
+load = Loader(get_skyfield_data_path(), expire=False)
+```
+
+
 ## Developers
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.

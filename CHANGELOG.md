@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Document the "Advanced" usage, with the ``expire`` option for the Loader.
 
 ## 0.0.1 (2019-07-29)
 
