@@ -3,6 +3,7 @@
 ## master (unreleased)
 
 * Document the "Advanced" usage, with the ``expire`` option for the Loader.
+* Ensure it's Python 2 compatible, since ``skyfield`` is compatible with Python 2.6/2.7.
 
 ## 0.0.1 (2019-07-29)
 

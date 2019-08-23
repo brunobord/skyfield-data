@@ -15,7 +15,6 @@ Several issues are raised by these data files:
 * Make regular releases to refresh the files before they expire.
 * Provide a warning / logging mechanism when the files are about to expire (or when they are outdated) to still allow you to compute things with the loaded assets, but being informed you need to upgrade.
 
-
 This way, you could **install or upgrade** this data package via ``pip``.
 
 Once all the files are on your disk space, you can instantiate your ``skyfield`` loader pointing at their path, without having to worry about anything.
@@ -48,6 +47,8 @@ load = Loader(get_skyfield_data_path(), expire=False)
 ## Developers
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
+
+*Note:* This project is, and should be compatible with Python 2.6/2.7 and Python 3.3+, to be kept the same Python compatiblity that `skyfield` has.
 
 ## Copyright
 
