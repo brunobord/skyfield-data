@@ -11,16 +11,15 @@ Several issues are raised by these data files:
 * In some countries, or behind some filtering proxies, the USNO is considered as a military website, and thus is **blocked**.
 * These files have **an expiration date** (in a more or less distant future). As a consequence, even if the files are already downloaded in the right path, at each runtime you could possibly have to download one or more files before making any computation using them.
 
-## Currently known expiration dates
+### Currently known expiration dates
 
-|      File       |     Date      |
-|:---------------:|:-------------:|
-|   deltat.data   |  2020-06-01   |
-| Leap_Second.dat |  2020-07-28   |
-|  deltat.preds   |  2021-01-01   |
-|    de421.bsp    | *unknown*(\*) |
+|      File       |    Date    |
+|:---------------:|:----------:|
+|   deltat.data   | 2020-06-01 |
+| Leap_Second.dat | 2020-07-28 |
+|  deltat.preds   | 2021-01-01 |
+|    de421.bsp    | 2053-10-08 |
 
-(\*) Even though its expiration date has not been extracted through a convenient script, we can state that it should expire in the year 2053.
 
 ## Goal for this project
 
@@ -60,7 +59,14 @@ load = Loader(get_skyfield_data_path(), expire=False)
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
 
+In order to be able to run the `download.py` script, we recommend to run it **from a virtualenv** where you'd have installed the "dev" dependencies, using:
+
+```sh
+make install-dev
+```
+
 *Note:* This project is, and should be compatible with Python 2.6/2.7 and Python 3.3+, to be kept the same Python compatiblity that `skyfield` has.
+
 
 ## Copyright
 

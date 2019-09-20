@@ -5,12 +5,44 @@ from datetime import datetime, timedelta
 from os.path import join, exists
 import shutil
 from urllib.request import urlopen
+from jplephem.spk import DAF, SPK
 
 from skyfield_data import get_skyfield_data_path
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
 USNO = "http://maia.usno.navy.mil/ser7"
 IERS = "https://hpiers.obspm.fr/iers/bul/bulc"
+
+
+def calendar_date(jd_integer):
+    """Convert Julian Day `jd_integer` into a Gregorian (year, month, day)."""
+
+    k = jd_integer + 68569
+    n = 4 * k // 146097
+
+    k = k - (146097 * n + 3) // 4
+    m = 4000 * (k + 1) // 1461001
+    k = k - 1461 * m // 4 + 31
+    month = 80 * k // 2447
+    day = k - 2447 * month // 80
+    k = month // 11
+
+    month = month + 2 - 12 * k
+    year = 100 * (n - 49) + m + k
+
+    return date(int(year), int(month), int(day))
+
+
+def bsp_expiration(fileobj):
+    """
+    Return the expiration date for a .bsp file.
+    """
+    daf_object = DAF(fileobj)
+    spk_object = SPK(daf_object)
+    dates = [segment.end_jd for segment in spk_object.segments]
+    # We take the closest end date, to expire the file as soon as it's obsolete
+    end_jd = min(dates)
+    return calendar_date(end_jd)
 
 
 def deltat_data_expiration(fileobj):
@@ -100,6 +132,9 @@ def download(url, target):
 
 
 def get_expiration_date(target, params):
+    """
+    Return expiration date for the given ``target``.
+    """
     expiration_date = None
     if exists(target):
         expiration_func = params.get("expiration_func")
@@ -136,7 +171,10 @@ def check_should_i_download(target, params):
 
 def main(args):
     items = {
-        "de421.bsp": {"server": JPL},
+        "de421.bsp": {
+            "server": JPL,
+            "expiration_func": bsp_expiration,
+        },
         "deltat.data": {
             "server": USNO,
             "expiration_func": deltat_data_expiration

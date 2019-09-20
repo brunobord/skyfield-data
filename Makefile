@@ -5,6 +5,8 @@ help:
 	@echo "             (see \`python download.py --help\` for options)"
 	@echo " * clean: remove all skyfield data from data directory."
 	@echo " * package: build python source package."
+	@echo ""
+	@echo " * install-dev: Install the requirements to execute download.py"
 
 download:
 	python3 download.py
@@ -14,3 +16,6 @@ clean:
 
 package:
 	python3 setup.py sdist bdist_wheel
+
+install-dev:
+	pip install -e .[dev]
