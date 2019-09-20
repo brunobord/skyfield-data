@@ -1,5 +1,7 @@
 # Data files for Skyfield
 
+## Rationale
+
 [Skyfield](https://rhodesmill.org/skyfield/) is a Python library for astronomical computations. It depends on various data files to accurately compute moon phases, planet positions, etc.
 
 Several issues are raised by these data files:
@@ -8,6 +10,17 @@ Several issues are raised by these data files:
 * They come mainly from 3 sources: the USNO (US Navy), Paris (Meudon) Observatory, and NASA JPL. **If one of them is temporarily unavailable**, you couldn't perform any computation.
 * In some countries, or behind some filtering proxies, the USNO is considered as a military website, and thus is **blocked**.
 * These files have **an expiration date** (in a more or less distant future). As a consequence, even if the files are already downloaded in the right path, at each runtime you could possibly have to download one or more files before making any computation using them.
+
+## Currently known expiration dates
+
+|      File       |     Date      |
+|:---------------:|:-------------:|
+|   deltat.data   |  2020-06-01   |
+| Leap_Second.dat |  2020-07-28   |
+|  deltat.preds   |  2021-01-01   |
+|    de421.bsp    | *unknown*(\*) |
+
+(\*) Even though its expiration date has not been extracted through a convenient script, we can state that it should expire in the year 2053.
 
 ## Goal for this project
 
@@ -42,7 +55,6 @@ If you want to make sure that the data files would **never** be downloaded, you 
 ```python
 load = Loader(get_skyfield_data_path(), expire=False)
 ```
-
 
 ## Developers
 

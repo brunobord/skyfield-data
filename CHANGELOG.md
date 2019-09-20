@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Added a ``--check-only`` argument to ``download.py`` to display the expiration dates of the files currently on disk.
 
 ## 0.0.2 (2019-08-23)
 

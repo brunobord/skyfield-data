@@ -99,6 +99,16 @@ def download(url, target):
             shutil.copyfileobj(response, fd)
 
 
+def get_expiration_date(target, params):
+    expiration_date = None
+    if exists(target):
+        expiration_func = params.get("expiration_func")
+        if expiration_func:
+            with open(target, 'rb') as fd:
+                expiration_date = expiration_func(fd)
+    return expiration_date
+
+
 def check_should_i_download(target, params):
     """
     Check if I should download the target file or not.
@@ -108,10 +118,8 @@ def check_should_i_download(target, params):
 
     if exists(target):
         # Search if the file has expired
-        expiration_func = params.get("expiration_func")
-        if expiration_func:
-            with open(target, 'rb') as fd:
-                expiration_date = expiration_func(fd)
+        expiration_date = get_expiration_date(target, params)
+        if expiration_date:
             if date.today() <= expiration_date:
                 should_i_download = False
                 reason = 'file will expire at {}'.format(expiration_date)
@@ -119,7 +127,7 @@ def check_should_i_download(target, params):
                 reason = "expiration date: {}".format(expiration_date)
         else:
             should_i_download = False
-            reason = "file already exists, no expiration function"
+            reason = "file already exists, no expiration function/date"
     else:
         reason = "file not here"
 
@@ -148,7 +156,15 @@ def main(args):
         url = "{}/{}".format(server, filename)
         target = join(get_skyfield_data_path(), filename)
 
-        if args.force:
+        if args.check_only:
+            expiration_date = get_expiration_date(target, params)
+            print(
+                "File: {} => expiration: {}".format(
+                    filename, expiration_date or "`unknown`"
+                )
+            )
+            continue
+        elif args.force:
             should_i_download, reason = True, "Forced download"
         else:
             should_i_download, reason = check_should_i_download(
@@ -168,6 +184,10 @@ if __name__ == '__main__':
     parser.add_argument(
         '--force', action="store_true", default=False,
         help="Force download, ignore expiration date or presence on disk."
+    )
+    parser.add_argument(
+        "--check-only", action="store_true", default=False,
+        help="Check only the expiration dates of the files on disk."
     )
     args = parser.parse_args()
     main(args)
