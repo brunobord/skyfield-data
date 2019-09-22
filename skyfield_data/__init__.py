@@ -1,4 +1,5 @@
 from os.path import dirname, join, abspath
+from .expirations import check_expirations
 
 __DATA_PATH = abspath(join(dirname(__file__), "data"))
 
@@ -14,6 +15,7 @@ def get_skyfield_data_path():
         load = Loader(get_skyfield_data_path())
         planets = load('de421.bsp')
     """
+    check_expirations()
     return __DATA_PATH
 
 

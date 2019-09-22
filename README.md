@@ -55,6 +55,18 @@ If you want to make sure that the data files would **never** be downloaded, you 
 load = Loader(get_skyfield_data_path(), expire=False)
 ```
 
+Whenever a file contained in the catalog has expired, you're going to receive a warning when loading the `skyfield-data` path:
+
+```python
+>>> from skyfield_data import get_skyfield_data_path
+>>> from skyfield.api import Loader
+>>> load = Loader(get_skyfield_data_path())
+/home/[redacted]/skyfield_data/expirations.py:25: RuntimeWarning: The file de421.bsp has expired. Please upgrade your version of `skyfield-data` or expect computation errors
+  RuntimeWarning
+```
+
+By default, the loading isn't blocked, but it's strongly recommended to upgrade to a more recent version, to make sure you're not going to make wrong astronomical computations.
+
 ## Developers
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.

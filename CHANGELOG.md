@@ -7,6 +7,8 @@
 * Dropped compatibility with Python 3.3 and 3.4, as skyfield did.
 * Added basic tests for the ``get_skyfield_data_path`` function using `tox`.
 * Added automated tests through Travis CI.
+* Generate a catalog of the expiration dates for files,
+* Detect when a file has expired and raise a ``UserWarning``
 
 ## 0.0.2 (2019-08-23)
 

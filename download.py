@@ -2,16 +2,16 @@
 import argparse
 from datetime import date
 from datetime import datetime, timedelta
-from os.path import join, exists
+from os.path import join, exists, abspath, dirname
 import shutil
 from urllib.request import urlopen
 from jplephem.spk import DAF, SPK
 
-from skyfield_data import get_skyfield_data_path
-
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
 USNO = "http://maia.usno.navy.mil/ser7"
 IERS = "https://hpiers.obspm.fr/iers/bul/bulc"
+
+__DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
 
 
 def calendar_date(jd_integer):
@@ -188,14 +188,21 @@ def main(args):
             "expiration_func": leap_seconds_expiration
         },
     }
+    # For expiration date content
+    target_expiration = abspath(
+        join(__DATA_PATH, '..', 'expiration_data.py')
+    )
+    expiration_dates = {}
 
     for filename, params in items.items():
         server = params["server"]
         url = "{}/{}".format(server, filename)
-        target = join(get_skyfield_data_path(), filename)
+        target = join(__DATA_PATH, filename)
+
+        expiration_date = get_expiration_date(target, params)
+        expiration_dates[filename] = expiration_date
 
         if args.check_only:
-            expiration_date = get_expiration_date(target, params)
             print(
                 "File: {} => expiration: {}".format(
                     filename, expiration_date or "`unknown`"
@@ -214,6 +221,13 @@ def main(args):
             download(url, target)
         else:
             print("Skipping {} ({})".format(filename, reason))
+    # Generating the expiration date file.
+    expiration_template = """import datetime
+
+EXPIRATIONS = {}
+"""
+    with open(target_expiration, 'w') as fd:
+        fd.write(expiration_template.format(expiration_dates))
     print("\nDone\n")
 
 
