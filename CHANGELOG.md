@@ -5,6 +5,8 @@
 * Added a ``--check-only`` argument to ``download.py`` to display the expiration dates of the files currently on disk.
 * Enable computation of the expiration date of the BSP file(s) on disk (requires to install the local repository using the [dev] option / See README for more information).
 * Dropped compatibility with Python 3.3 and 3.4, as skyfield did.
+* Added basic tests for the ``get_skyfield_data_path`` function using `tox`.
+* Added automated tests through Travis CI.
 
 ## 0.0.2 (2019-08-23)
 

@@ -6,7 +6,8 @@ help:
 	@echo " * clean: remove all skyfield data from data directory."
 	@echo " * package: build python source package."
 	@echo ""
-	@echo " * install-dev: Install the requirements to execute download.py"
+	@echo " * install-dev: Install the requirements to switch to dev mode."
+	@echo " * test: Run tests using tox."
 
 download:
 	python3 download.py
@@ -19,3 +20,6 @@ package:
 
 install-dev:
 	pip install -e .[dev]
+
+test:
+	tox
