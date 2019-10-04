@@ -10,6 +10,7 @@
 * Generate a catalog of the expiration dates for files,
 * Detect when a file has expired and raise a ``UserWarning``
 * Add Travis CI badge on README.
+* Warn user when there's a download error. Expiration date file won't be modified if at least one of the downloads has failed.
 
 ## 0.0.2 (2019-08-23)
 

@@ -2,10 +2,14 @@
 import argparse
 from datetime import date
 from datetime import datetime, timedelta
-from os.path import join, exists, abspath, dirname
+from os.path import join, exists, abspath, dirname, basename
 import shutil
 from urllib.request import urlopen
 from jplephem.spk import DAF, SPK
+from colorama import init
+from termcolor import colored
+
+init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
 USNO = "http://maia.usno.navy.mil/ser7"
@@ -126,9 +130,17 @@ def leap_seconds_expiration(fileobj):
 def download(url, target):
     "Download (binary) ``url`` and save it to ``target``."
     print("URL: {}".format(url))
-    with urlopen(url) as response:
-        with open(target, "wb") as fd:
-            shutil.copyfileobj(response, fd)
+    try:
+        with urlopen(url) as response:
+            with open(target, "wb") as fd:
+                shutil.copyfileobj(response, fd)
+        return True
+    except Exception as exc:
+        msg = "*** Error: {} couldn't be downloaded ({})".format(
+            basename(target), exc
+        )
+        print(colored(msg, 'red'))
+    return False
 
 
 def get_expiration_date(target, params):
@@ -192,6 +204,7 @@ def main(args):
     target_expiration = abspath(
         join(__DATA_PATH, '..', 'expiration_data.py')
     )
+    success = True
     expiration_dates = {}
 
     for filename, params in items.items():
@@ -218,16 +231,20 @@ def main(args):
 
         if should_i_download:
             print("Downloading {} ({})".format(filename, reason))
-            download(url, target)
+            success = download(url, target) and success
         else:
             print("Skipping {} ({})".format(filename, reason))
+
     # Generating the expiration date file.
-    expiration_template = """import datetime
+    if success:  # only in case of a success
+        expiration_template = """import datetime
 
 EXPIRATIONS = {}
 """
-    with open(target_expiration, 'w') as fd:
-        fd.write(expiration_template.format(expiration_dates))
+        with open(target_expiration, 'w') as fd:
+            fd.write(expiration_template.format(expiration_dates))
+    else:
+        print("** Skipped expiration generation: failed to download.")
     print("\nDone\n")
 
 
