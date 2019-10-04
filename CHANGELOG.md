@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Added ``expiration_limit`` argument for ``get_skyfield_data_path`` function. Enables to shift the expiration date limit by "n" days.
 
 ## 0.1.0 (2019-10-04)
 

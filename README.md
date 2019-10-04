@@ -69,6 +69,22 @@ Whenever a file contained in the catalog has expired, you're going to receive a 
 
 By default, the loading isn't blocked, but it's strongly recommended to upgrade to a more recent version, to make sure you're not going to make wrong astronomical computations.
 
+### Custom limit
+
+By default, the ``RuntimeWarning`` is raised when the file **has** expired. You may want to be aware of this warning **in advance**, that is to say a few days or weeks before, in order to eventually upgrade your version of ``skyfield-data``.
+
+In order to trigger this warning, you can use the ``expiration_limit`` argument, like this:
+
+```python
+>>> from skyfield_data import get_skyfield_data_path
+>>> from skyfield.api import Loader
+>>> load = Loader(get_skyfield_data_path(expiration_limit=30))
+/home/[redacted]/skyfield_data/expirations.py:25: RuntimeWarning: The file de421.bsp would expire in less than 30 days. Please upgrade your version of `skyfield-data` or expect computation errors
+  RuntimeWarning
+```
+
+**Note:** The ``expiration_limit`` argument should be a positive integer (or zero).
+
 ## Developers
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
