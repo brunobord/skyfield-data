@@ -9,6 +9,7 @@
 * Added automated tests through Travis CI.
 * Generate a catalog of the expiration dates for files,
 * Detect when a file has expired and raise a ``UserWarning``
+* Add Travis CI badge on README.
 
 ## 0.0.2 (2019-08-23)
 

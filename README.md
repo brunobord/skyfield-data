@@ -1,5 +1,7 @@
 # Data files for Skyfield
 
+[![Build Status](https://travis-ci.org/brunobord/skyfield-data.svg?branch=master)](https://travis-ci.org/brunobord/skyfield-data)
+
 ## Rationale
 
 [Skyfield](https://rhodesmill.org/skyfield/) is a Python library for astronomical computations. It depends on various data files to accurately compute moon phases, planet positions, etc.
