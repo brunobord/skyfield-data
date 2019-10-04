@@ -11,6 +11,7 @@
 * Detect when a file has expired and raise a ``UserWarning``
 * Add Travis CI badge on README.
 * Warn user when there's a download error. Expiration date file won't be modified if at least one of the downloads has failed.
+* Added a test to check if the current files are about to expire (45 days from now). Travis CI would run a monthly job and eventually report when it has failed, so actions can be done to refresh the files and "unbreak" the library.
 
 ## 0.0.2 (2019-08-23)
 
