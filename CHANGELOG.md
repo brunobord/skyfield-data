@@ -2,7 +2,10 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Revamped/Simplified Travis configuration.
+* Removed tox.ini reference to Python 3.3 builds.
+* Warn users that this project is not compatible with Python 2.6.
+* Add Python 3.8 compatibility (#1).
 
 ## 1.0.0 (2020-05-05)
 
