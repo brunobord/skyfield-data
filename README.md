@@ -95,7 +95,7 @@ In order to be able to run the `download.py` script, we recommend to run it **fr
 make install-dev
 ```
 
-*Note:* This project is, and should be compatible with Python 2.7 and Python 3.5+, to keep the same Python compatiblity that `skyfield` has.
+*Note:* This project is, and should be compatible with Python 2.7 and Python 3.5+ up to 3.8, to keep the same Python compatiblity that `skyfield` has.
 
 **WARNING!**: This project is not compatible with Python 2.6.
 
