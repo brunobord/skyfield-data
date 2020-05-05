@@ -17,8 +17,8 @@ Several issues are raised by these data files:
 
 |      File       |    Date    |
 |:---------------:|:----------:|
-|   deltat.data   | 2020-06-01 |
-| Leap_Second.dat | 2020-07-28 |
+|   deltat.data   | 2021-02-01 |
+| Leap_Second.dat | 2021-01-27 |
 |  deltat.preds   | 2021-01-01 |
 |    de421.bsp    | 2053-10-08 |
 

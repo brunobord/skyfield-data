@@ -1,12 +1,26 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 1.0.0 (2020-05-05)
 
-* Added ``expiration_limit`` argument for ``get_skyfield_data_path`` function. Enables to shift the expiration date limit by "n" days.
-* USNO file serving host has changed. Pointing now at ``ftp://cddis.nasa.gov/products/iers/`` for ``deltat.*`` files.
+### Data updates
+
+**Data files were downloaded on 2020-05-05.**
+
 * Updated ``deltat.data`` data file.
 * Updated ``Leap_Second.dat`` data file.
-* All expiration data items are also up-to-date as of 2020-05-05.
+* All expiration data items are up-to-date as of 2020-05-05.
+
+### Library Runtime Enhancements
+
+* Added ``expiration_limit`` argument for ``get_skyfield_data_path`` function. Enables to shift the expiration date limit by "n" days.
+
+### Downloader enhancement
+
+* USNO file serving host has changed. Pointing now at ``ftp://cddis.nasa.gov/products/iers/`` for ``deltat.*`` files.
+
+### Minor changes
+
+* Changes in Python ``setup.cfg`` classifiers.
 
 ## 0.1.0 (2019-10-04)
 
