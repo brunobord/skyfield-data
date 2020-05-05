@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 1.0.0 (2020-05-05)
 
 ### Data updates
