@@ -12,7 +12,7 @@ from termcolor import colored
 init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
-USNO = "http://maia.usno.navy.mil/ser7"
+USNO = "ftp://cddis.nasa.gov/products/iers/"
 IERS = "https://hpiers.obspm.fr/iers/bul/bulc"
 
 __DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
