@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Revamped/Simplified Travis configuration.
 
 ## 1.0.0 (2020-05-05)
 
