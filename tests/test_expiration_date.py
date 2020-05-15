@@ -79,9 +79,11 @@ def test_wrong_custom_expiration_limit_check_expirations():
 
 def test_current_expiration_date():
     # Filter all files that would expire in 45 days
-    expired = {
-        k: v for k, v in EXPIRATIONS.items()
-        if date.today() >= v - timedelta(days=45)
-    }
+    # NOTE: this could be done using a dict comprehension, but this code has
+    # to be kept Python 2.6-compatible.
+    today = date.today()
+    expired = EXPIRATIONS.items()
+    expired = filter(lambda x: today >= x[1] - timedelta(days=45), expired)
+    expired = list(expired)
     assert not expired, \
-        "{} files(s) are about to expire: {}".format(len(expired), expired)
+        "%d files(s) are about to expire: %s" % (len(expired), expired)

@@ -1,6 +1,6 @@
 # Data files for Skyfield
 
-[![Build Status](https://travis-ci.org/brunobord/skyfield-data.svg?branch=master)](https://travis-ci.org/brunobord/skyfield-data)
+[![Build Status](https://travis-ci.org/brunobord/skyfield-data.svg?branch=master)](https://travis-ci.org/brunobord/skyfield-data) | [![CircleCI](https://circleci.com/gh/brunobord/skyfield-data.svg?style=svg)](https://circleci.com/gh/brunobord/skyfield-data)
 
 ## Rationale
 
@@ -87,6 +87,8 @@ In order to trigger this warning, you can use the ``expiration_limit`` argument,
 
 ## Developers
 
+We assume that you'll be using a Python3.6+ version for all regular operations.
+
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
 
 In order to be able to run the `download.py` script, we recommend to run it **from a virtualenv** where you'd have installed the "dev" dependencies, using:
@@ -95,10 +97,46 @@ In order to be able to run the `download.py` script, we recommend to run it **fr
 make install-dev
 ```
 
-*Note:* This project is, and should be compatible with Python 2.7 and Python 3.5+ up to 3.8, to keep the same Python compatiblity that `skyfield` has.
+### Python compatibility
 
-**WARNING!**: This project is not compatible with Python 2.6.
+*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.5+ up to 3.8, to keep the same Python compatibility that `skyfield` has.
 
+### Hacking
+
+Improving or fixing `skyfield-data` will require you to have at least a virtualenv with `tox` installed on it.
+
+We'll ask you to add tests along your patch, to make sure that no regression or bug would be introduced by your patch or further ones.
+
+To make a quick'n'dirty test, inside your "tox-ready" virtualenv, run:
+
+```sh
+make test
+```
+
+to launch the Python 2.7 and Python 3.5+ test jobs.
+
+If you want to test your branch against Python 2.6, you'll have to setup a Python 2.6-ready tox environment, by doing something similar to:
+
+```sh
+sudo apt install python2.6 python2.6-dev  # dev headers to compile numpy
+mkvirtualenv TOX26 --python=`which python2.6`  # You will activate this venv with `workon TOX26`
+pip install tox
+tox -c tox-py26.ini
+```
+
+**Known issues**: on Ubuntu, you may be unable to build numpy at this point, due to misplaced C header files in your system. I've had hard times on Ubuntu, but your mileage may vary.
+
+If you don't want to or can't install Python 2.6 requirements, you'll have to rely on the Online CI jobs by Circle-CI.
+
+
+### Online CI with Travis & Circle-CI
+
+The online CI is done by two services:
+
+* [Travis](https://travis-ci.org/brunobord/skyfield-data): to run Python 2.7, 3.5+ to 3.8 tests.
+* [Circle-CI](https://circleci.com/gh/brunobord/skyfield-data): dedicated to run the Python 2.6 tests.
+
+If either one of them is failing, your PR won't be merged.
 
 ## Copyright
 

@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  build-and-test:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: "Deadsnakes and Python2.6"
+          command: |
+            sudo add-apt-repository ppa:deadsnakes/ppa
+            sudo apt-get update
+            sudo apt-get install python2.6 python2.6-dev
+      - run:
+          name: "Create TOX virtualenv"
+          command: virtualenv TOX --python=`which python2.6`
+      - run:
+          command: ./TOX/bin/pip install tox
+          name: "Install tox in TOX venv"
+      - run:
+          command: ./TOX/bin/tox -c tox-py26.ini
+          name: "Test against Python2.6"
+
+workflows:
+  main:
+    jobs:
+      - build-and-test

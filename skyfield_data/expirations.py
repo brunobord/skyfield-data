@@ -7,6 +7,10 @@ from .expiration_data import EXPIRATIONS
 
 __DATA_PATH = abspath(join(dirname(__file__), "data"))
 
+# IMPORTANT NOTE: This module has to keep compatibility with Python 2.6
+# That's the reason why it doesn't use ``format()`` to format strings, but the
+# old ``%`` formatting.
+
 
 def get_all():
     return EXPIRATIONS
@@ -31,15 +35,15 @@ def check_expirations(expiration_limit=0):
         expiration_date = expirations.get(filename)
         if expiration_date:
             message = (
-                "The file {} has expired."
+                "The file %s has expired."
                 " Please upgrade your version of `skyfield-data` or expect"
-                " computation errors").format(filename)
+                " computation errors") % filename
             if expiration_limit:
                 expiration_date -= timedelta(days=expiration_limit)
                 message = (
-                    "The file {} would expire in less than {} days."
+                    "The file %s would expire in less than %d days."
                     " Please upgrade your version of `skyfield-data` or expect"
-                    " computation errors").format(filename, expiration_limit)
+                    " computation errors") % (filename, expiration_limit)
 
             if date.today() >= expiration_date:
                 warnings.warn(message, RuntimeWarning)
