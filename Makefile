@@ -23,3 +23,6 @@ install-dev:
 
 test:
 	tox
+
+test-py26:
+	tox -c tox-py26.ini
