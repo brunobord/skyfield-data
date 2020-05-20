@@ -1,11 +1,16 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 1.1.0 (2020-05-20)
+
+### Python compatibility
+
+* Added Python 3.8 compatibility (#1).
+* Added Python 2.6 compatibility + circle-ci job, documentation amended, code fixed to be compatible with Python 2.6 (#6).
+* Removed tox.ini reference to Python 3.3 builds.
+
+### Minor changes
 
 * Revamped/Simplified Travis configuration.
-* Removed tox.ini reference to Python 3.3 builds.
-* Add Python 3.8 compatibility (#1).
-* Added Python 2.6 compatibility + circle-ci job, documentation amended, code fixed to be compatible with Python 2.6 (#6).
 
 ## 1.0.0 (2020-05-05)
 
