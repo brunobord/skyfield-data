@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 1.1.0 (2020-05-20)
 
 ### Python compatibility
