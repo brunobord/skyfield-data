@@ -21,7 +21,7 @@ Several issues are raised by these data files:
 |    de421.bsp    | 2053-10-08 |
 
 
-**Deprecation warning**: As of ``python-skyfield>=1.31``, `deltat.data` and `deltat.preds` file are not used anymore. They were not maintained anymore, and Brandon Rhodes switched to other source files for ∆T computations.
+**Deprecation warning**: As of ``python-skyfield>=1.31``, `deltat.data` and `deltat.preds` files are not used anymore. They were not maintained anymore, and Brandon Rhodes switched to other source files for ∆T computations.
 
 ## Goal for this project
 
@@ -48,7 +48,7 @@ from skyfield_data import get_skyfield_data_path
 from skyfield.api import Loader
 load = Loader(get_skyfield_data_path())
 planets = load('de421.bsp')  # this command won't download this file
-ts = load.timescale()  # this command won't download the deltat + Leap Second files
+ts = load.timescale()  # this command won't download the IERS + Leap Second files
 ```
 
 If you want to make sure that the data files would **never** be downloaded, you can also use the ``expire`` option like this:
@@ -143,7 +143,6 @@ If either one of them is failing, your PR won't be merged.
 ### Data files
 
 * `de421.bsp` is provided by the *Jet Propulsion Laboratory*,
-* `deltat.data` and `deltat.preds` are provided by the *United States Naval Observatory*,
 * `Leap_Second.dat` is provided by the *International Earth Rotation and Reference Systems Service*.
 
 ### Software
