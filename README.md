@@ -17,11 +17,11 @@ Several issues are raised by these data files:
 
 |      File       |    Date    |
 |:---------------:|:----------:|
-|   deltat.data   | 2021-02-01 |
 | Leap_Second.dat | 2021-01-27 |
-|  deltat.preds   | 2021-01-01 |
 |    de421.bsp    | 2053-10-08 |
 
+
+**Deprecation warning**: As of ``python-skyfield>=1.31``, `deltat.data` and `deltat.preds` file are not used anymore. They were not maintained anymore, and Brandon Rhodes switched to other source files for ∆T computations.
 
 ## Goal for this project
 

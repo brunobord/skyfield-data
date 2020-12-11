@@ -12,7 +12,6 @@ from termcolor import colored
 init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
-USNO = "ftp://cddis.nasa.gov/products/iers/"
 IERS = "https://hpiers.obspm.fr/iers/bul/bulc"
 
 __DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
@@ -47,62 +46,6 @@ def bsp_expiration(fileobj):
     # We take the closest end date, to expire the file as soon as it's obsolete
     end_jd = min(dates)
     return calendar_date(end_jd)
-
-
-def deltat_data_expiration(fileobj):
-    """Return the expiration date for the USNO ``deltat.data`` file.
-
-    Each line file gives the date and the value of Delta T::
-
-        2016  2  1  68.1577
-    """
-    line = None
-    for line in fileobj.readlines():
-        pass
-    # `line` is the last line
-    if not line:  # No line, error...
-        return
-    array = line.strip().split()
-    # We'll only keep the year / month / day
-    array = array[:3]
-    array = map(int, array)
-    year, month, day = array
-    # By convention, the file expires at year+1
-    return date(year + 1, month, day)
-
-
-def deltat_preds_expiration(fileobj):
-    """
-    Return the expiration date for the USNO ``deltat.preds`` file.
-
-    The old format supplies a floating point year, the value of Delta T,
-    and one or two other fields::
-
-    2015.75      67.97               0.210         0.02
-
-    The new format adds a modified Julian day as the first field:
-
-    58484.000  2019.00   69.34      -0.152       0.117
-
-    """
-    lines = iter(fileobj)
-    header = next(lines)
-
-    if header.startswith(b'YEAR'):
-        # Format in use until 2019 February
-        next(lines)  # discard blank line
-        line = next(lines)
-        year_float = float(line.strip().split().pop())
-    else:
-        # Format in use since 2019 February
-        line = next(lines)
-        array = line.strip().split()
-        year_float = float(array[1])
-
-    year = int(year_float)
-    month = 1 + int(year_float * 12.0) % 12
-    expiration_date = date(year + 2, month, 1)
-    return expiration_date
 
 
 def leap_seconds_expiration(fileobj):
@@ -186,14 +129,6 @@ def main(args):
         "de421.bsp": {
             "server": JPL,
             "expiration_func": bsp_expiration,
-        },
-        "deltat.data": {
-            "server": USNO,
-            "expiration_func": deltat_data_expiration
-        },
-        "deltat.preds": {
-            "server": USNO,
-            "expiration_func": deltat_preds_expiration
         },
         "Leap_Second.dat": {
             "server": IERS,
