@@ -17,7 +17,7 @@ Several issues are raised by these data files:
 
 |      File       |    Date    |
 |:---------------:|:----------:|
-| Leap_Second.dat | 2021-01-27 |
+| Leap_Second.dat | 2021-07-28 |
 |    de421.bsp    | 2053-10-08 |
 
 

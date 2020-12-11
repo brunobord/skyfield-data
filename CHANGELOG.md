@@ -6,6 +6,12 @@
 * Adapted tests for warnings to point at the `Leap_Second.dat` file.
 * Removed references to the `deltat.*` files in the docs and test files.
 
+### Data updates
+
+**Data files were downloaded on 2020-12-11.**
+
+* Updated the `Leap_Second.dat` data file.
+
 ## 1.1.0 (2020-05-20)
 
 ### Python compatibility
