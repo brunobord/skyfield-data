@@ -1,6 +1,8 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 2.0.0 (2020-12-11)
+
+### Important changes
 
 * Removed `deltat.data` & `deltat.preds` files from the archive. They're not used by Skyfield anymore, as of v1.31 (October 2020), since they were not updated by the providers. Skyfield now uses a builtin, the `iers.npz` file, embedded into the library.
 * Adapted tests for warnings to point at the `Leap_Second.dat` file.
