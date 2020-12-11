@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 2.0.0 (2020-12-11)
 
 ### Important changes
