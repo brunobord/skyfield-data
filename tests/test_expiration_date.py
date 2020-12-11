@@ -37,7 +37,7 @@ def test_wrong_custom_expiration_limit_check_expirations():
 
 
 @mock.patch('skyfield_data.expirations.get_all')
-def test_expiration_deltat_distant_future(mocked_exp):
+def test_expiration_distant_future(mocked_exp):
     mocked_exp.return_value = {
         'Leap_Second.dat': date.today() + timedelta(days=10000)
     }
@@ -47,7 +47,7 @@ def test_expiration_deltat_distant_future(mocked_exp):
 
 
 @mock.patch('skyfield_data.expirations.get_all')
-def test_expiration_deltat_yesterday(mocked_exp):
+def test_expiration_yesterday(mocked_exp):
     mocked_exp.return_value = {
         'Leap_Second.dat': date.today() - timedelta(days=1)
     }
@@ -59,7 +59,7 @@ def test_expiration_deltat_yesterday(mocked_exp):
 
 
 @mock.patch('skyfield_data.expirations.get_all')
-def test_expiration_deltat_custom_limit(mocked_exp):
+def test_expiration_custom_limit(mocked_exp):
     # It expires in 20 days
     mocked_exp.return_value = {
         'Leap_Second.dat': date.today() + timedelta(days=20)
