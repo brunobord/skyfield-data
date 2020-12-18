@@ -9,14 +9,15 @@
 Several issues are raised by these data files:
 
 * If they're not found in the path of the ``Loader``, they're **downloaded at runtime**. Depending on the archive you're requesting, some files might be very large, causing a long delay (directly related to your network bandwidth). In the case of a web server app, you'd cause a timeout on client's end.
-* They come mainly from 3 sources: the USNO (US Navy), Paris (Meudon) Observatory, and NASA JPL. **If one of them is temporarily unavailable**, you couldn't perform any computation.
-* In some countries, or behind some filtering proxies, the USNO is considered as a military website, and thus is **blocked**.
+* They come mainly from 2 sources: NASA's JPL, and the IERS. **If one of them is temporarily unavailable**, you couldn't perform any computation.
+* In some countries, or behind some filtering proxies, some hosts may be **blocked**.
 * These files have **an expiration date** (in a more or less distant future). As a consequence, even if the files are already downloaded in the right path, at each runtime you could possibly have to download one or more files before making any computation using them.
 
 ### Currently known expiration dates
 
 |      File       |    Date    |
 |:---------------:|:----------:|
+| finals2000A.all | 2022-02-13 |
 |    de421.bsp    | 2053-10-08 |
 
 
@@ -47,8 +48,10 @@ from skyfield_data import get_skyfield_data_path
 from skyfield.api import Loader
 load = Loader(get_skyfield_data_path())
 planets = load('de421.bsp')  # this command won't download this file
-ts = load.timescale()  # this command won't download the IERS file(s), it uses the built-in ones
+ts = load.timescale(builtin=False)  # this command won't download the IERS file
 ```
+
+For the record, using `buitin=True` as an argument to load the timescale data won't trigger the download of the file, because python-skyfield embeds its own data files as a built-in data source.
 
 If you want to make sure that the data files would **never** be downloaded, you can also use the ``expire`` option like this:
 
@@ -142,6 +145,7 @@ If either one of them is failing, your PR won't be merged.
 ### Data files
 
 * `de421.bsp` is provided by the *Jet Propulsion Laboratory*,
+* `finals2000A.all` is provided by the *International Earth Rotation and Reference Systems Service*.
 
 ### Software
 

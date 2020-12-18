@@ -11,6 +11,7 @@ from termcolor import colored
 init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
+IERS = "ftp://ftp.iers.org/products/eop/rapid/standard"
 
 __DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
 
@@ -44,6 +45,21 @@ def bsp_expiration(fileobj):
     # We take the closest end date, to expire the file as soon as it's obsolete
     end_jd = min(dates)
     return calendar_date(end_jd)
+
+
+def finals_expiration(fileobj):
+    """
+    Return the expiration date for the finals2000A.all file.
+    """
+    # Read the last line of the file
+    lines = fileobj.read().splitlines()
+    last_line = lines[-1]
+    text_date = last_line[:6]
+    year, month, day = map(
+        int, (text_date[0:2], text_date[2:4], text_date[4:6])
+    )
+    expiration_date = date(2000 + year, month, day)
+    return expiration_date
 
 
 def download(url, target):
@@ -106,6 +122,10 @@ def main(args):
             "server": JPL,
             "expiration_func": bsp_expiration,
         },
+        "finals2000A.all": {
+            "server": IERS,
+            "expiration_func": finals_expiration,
+        }
     }
     # For expiration date content
     target_expiration = abspath(
