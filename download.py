@@ -1,7 +1,6 @@
 # !/usr/bin/python3
 import argparse
 from datetime import date
-from datetime import datetime, timedelta
 from os.path import join, exists, abspath, dirname, basename
 import shutil
 from urllib.request import urlopen
@@ -12,7 +11,7 @@ from termcolor import colored
 init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
-IERS = "https://hpiers.obspm.fr/iers/bul/bulc"
+IERS = "ftp://ftp.iers.org/products/eop/rapid/standard"
 
 __DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
 
@@ -48,25 +47,18 @@ def bsp_expiration(fileobj):
     return calendar_date(end_jd)
 
 
-def leap_seconds_expiration(fileobj):
+def finals_expiration(fileobj):
     """
-    Return the expiration date for the IERS file ``Leap_Second.dat``.
+    Return the expiration date for the finals2000A.all file.
     """
-    lines = iter(fileobj)
-    for line in lines:
-        if line.startswith(b'#  File expires on'):
-            break
-    else:
-        raise ValueError('Leap_Second.dat is missing its expiration date')
-    line = line.decode('ascii')
-
-    dt = datetime.strptime(line, '#  File expires on %d %B %Y\n')
-
-    # The file went out of date at the beginning of July 2016, and kept
-    # downloading every time a user ran a Skyfield program.  So we now
-    # build in a grace period:
-    grace_period = timedelta(days=30)
-    expiration_date = dt.date() + grace_period
+    # Read the last line of the file
+    lines = fileobj.read().splitlines()
+    last_line = lines[-1]
+    text_date = last_line[:6]
+    year, month, day = map(
+        int, (text_date[0:2], text_date[2:4], text_date[4:6])
+    )
+    expiration_date = date(2000 + year, month, day)
     return expiration_date
 
 
@@ -130,10 +122,10 @@ def main(args):
             "server": JPL,
             "expiration_func": bsp_expiration,
         },
-        "Leap_Second.dat": {
+        "finals2000A.all": {
             "server": IERS,
-            "expiration_func": leap_seconds_expiration
-        },
+            "expiration_func": finals_expiration,
+        }
     }
     # For expiration date content
     target_expiration = abspath(
