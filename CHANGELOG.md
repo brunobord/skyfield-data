@@ -1,12 +1,21 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 3.0.0 (2020-12-18)
 
-* Using `finals2000A.all` file for timescale computations.
-* Removed `Leap_Second.dat` file from the archive. They're not used by Skyfield anymore.
-* Adapted tests for warnings to point at the `de421.bsp` file.
-* Removed references to `Leap_Second.dat` from doc and test files.
+### Important changes
+
+* Using `finals2000A.all` file for timescale computations (#14).
+* Removed `Leap_Second.dat` file from the archive. They're not used by Skyfield anymore (#14).
+* Adapted tests for warnings to point at the `de421.bsp` file (#14).
+* Removed references to `Leap_Second.dat` from doc and test files (#14).
 * Confirmed support of Python 3.9 (#15).
+
+### Data updates
+
+**Data files were downloaded on 2020-12-18.**
+
+* Downloaded the `finals2000A.all` data file.
+
 
 ## 2.0.0 (2020-12-11)
 
