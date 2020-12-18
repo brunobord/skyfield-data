@@ -101,7 +101,7 @@ make install-dev
 
 ### Python compatibility
 
-*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.5+ up to 3.8, to keep the same Python compatibility that `skyfield` has.
+*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.5+ up to 3.9, to keep the same Python compatibility that `skyfield` has.
 
 ### Hacking
 
@@ -135,7 +135,7 @@ If you don't want to or can't install Python 2.6 requirements, you'll have to re
 
 The online CI is done by two services:
 
-* [Travis](https://travis-ci.org/brunobord/skyfield-data): to run Python 2.7, 3.5+ to 3.8 tests.
+* [Travis](https://travis-ci.org/brunobord/skyfield-data): to run Python 2.7, 3.5+ to 3.9 tests.
 * [Circle-CI](https://circleci.com/gh/brunobord/skyfield-data): dedicated to run the Python 2.6 tests.
 
 If either one of them is failing, your PR won't be merged.
