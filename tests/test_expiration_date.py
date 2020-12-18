@@ -39,7 +39,7 @@ def test_wrong_custom_expiration_limit_check_expirations():
 @mock.patch('skyfield_data.expirations.get_all')
 def test_expiration_distant_future(mocked_exp):
     mocked_exp.return_value = {
-        'Leap_Second.dat': date.today() + timedelta(days=10000)
+        'de421.bsp': date.today() + timedelta(days=10000)
     }
     with mock.patch('warnings.warn') as mocked_warn:
         get_skyfield_data_path()
@@ -49,27 +49,27 @@ def test_expiration_distant_future(mocked_exp):
 @mock.patch('skyfield_data.expirations.get_all')
 def test_expiration_yesterday(mocked_exp):
     mocked_exp.return_value = {
-        'Leap_Second.dat': date.today() - timedelta(days=1)
+        'de421.bsp': date.today() - timedelta(days=1)
     }
     with mock.patch('warnings.warn') as mocked_warn:
         get_skyfield_data_path()
     assert mocked_warn.call_count == 1
     message = mocked_warn.call_args[0][0]
-    assert "The file Leap_Second.dat has expired." in message
+    assert "The file de421.bsp has expired." in message
 
 
 @mock.patch('skyfield_data.expirations.get_all')
 def test_expiration_custom_limit(mocked_exp):
     # It expires in 20 days
     mocked_exp.return_value = {
-        'Leap_Second.dat': date.today() + timedelta(days=20)
+        'de421.bsp': date.today() + timedelta(days=20)
     }
     with mock.patch('warnings.warn') as mocked_warn:
         # Limit is 40 days, the limit is reached
         get_skyfield_data_path(expiration_limit=40)
     assert mocked_warn.call_count == 1
     message = mocked_warn.call_args[0][0]
-    assert "The file Leap_Second.dat would expire in less than 40 days." in message
+    assert "The file de421.bsp would expire in less than 40 days." in message
 
     with mock.patch('warnings.warn') as mocked_warn:
         # Limit is 15 days, the limit is not reached

@@ -2,7 +2,9 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Removed `Leap_Second.dat` file from the archive. They're not used by Skyfield anymore.
+* Adapted tests for warnings to point at the `de421.bsp` file.
+* Removed references to `Leap_Second.dat` from doc and test files.
 
 ## 2.0.0 (2020-12-11)
 
