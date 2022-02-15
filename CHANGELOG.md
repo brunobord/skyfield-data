@@ -6,7 +6,7 @@
 * Dropped support for Python 3.5.
 * Confirmed support for Python 3.10.
 * **NOTE**: Temporarily skipped Python 2.6 tests.
-* **IMPORTANT**: Temporarily skipped the Expiration Date test, in order to set-up the GH Action CI.
+* Upgrade `finals2000A.all` file, which has expired, thanks @6ruff for the bug report (#20).
 
 ## 3.0.0 (2020-12-18)
 

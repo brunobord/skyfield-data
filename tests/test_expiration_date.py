@@ -77,7 +77,6 @@ def test_expiration_custom_limit(mocked_exp):
     assert mocked_warn.call_count == 0
 
 
-@pytest.mark.skip("Momentary skip, because I need to fix the CI first")
 def test_current_expiration_date():
     # Filter all files that would expire in 45 days
     # NOTE: this could be done using a dict comprehension, but this code has
