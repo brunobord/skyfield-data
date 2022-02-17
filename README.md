@@ -1,6 +1,6 @@
 # Data files for Skyfield
 
-[![Build Status](https://travis-ci.org/brunobord/skyfield-data.svg?branch=master)](https://travis-ci.org/brunobord/skyfield-data) | [![CircleCI](https://circleci.com/gh/brunobord/skyfield-data.svg?style=svg)](https://circleci.com/gh/brunobord/skyfield-data)
+[![Tests](https://github.com/brunobord/skyfield-data/actions/workflows/tests.yml/badge.svg)](https://github.com/brunobord/skyfield-data/actions/workflows/tests.yml)
 
 ## Rationale
 
@@ -128,17 +128,13 @@ tox -c tox-py26.ini
 
 **Known issues**: on Ubuntu, you may be unable to build numpy at this point, due to misplaced C header files in your system. I've had hard times on Ubuntu, but your mileage may vary.
 
-If you don't want to or can't install Python 2.6 requirements, you'll have to rely on the Online CI jobs by Circle-CI.
-
+Note: At the moment, we can't prove that skyfield-data is 100% compatible with Python 2.6, because of a defunct CI. Although, we're pretty confident it is. Fingers crossed!
 
 ### Online CI with Travis & Circle-CI
 
-The online CI is done by two services:
+The online CI relies on Github Actions:
 
-* [Travis](https://travis-ci.org/brunobord/skyfield-data): to run Python 2.7, 3.5+ to 3.9 tests.
-* [Circle-CI](https://circleci.com/gh/brunobord/skyfield-data): dedicated to run the Python 2.6 tests.
-
-If either one of them is failing, your PR won't be merged.
+[![Tests](https://github.com/brunobord/skyfield-data/actions/workflows/tests.yml/badge.svg)](https://github.com/brunobord/skyfield-data/actions/workflows/tests.yml)
 
 ## Copyright
 

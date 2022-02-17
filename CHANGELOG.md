@@ -1,11 +1,16 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 4.0.0 (2022-02-17)
 
 * Switching from Travis/CircleCI for tests and CI to Github Actions (inspired by #24, thank you a lot, @Deuchnord).
 * Dropped support for Python 3.5.
 * Confirmed support for Python 3.10.
-* **NOTE**: Temporarily skipped Python 2.6 tests.
+* **NOTE**: Temporarily skipped Python 2.6 tests. Since version 3.0.0, the runtime code hasn't been modified, so this means that it should still be compatible, although... We can't prove it.
+
+### Data updates
+
+**Data files were downloaded on 2022-12-15.**
+
 * Upgrade `finals2000A.all` file, which has expired, thanks @6ruff for the bug report (#20).
 
 ## 3.0.0 (2020-12-18)
