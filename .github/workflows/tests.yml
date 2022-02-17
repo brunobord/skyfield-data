@@ -20,25 +20,19 @@ jobs:
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           wget -q -O - https://packagecloud.io/gpg.key | sudo apt-key add -
           sudo apt-get update
-          apt-cache search wheel
+          sudo apt-get install python2.6 python2.6-dev python2.6-venv
 
-# sudo apt-get install python2.6 python2.6-dev
-
-      # - name: "Create tox virtualenv"
-      #   run: |
-      #     virtualenv TOX --python=`which python2.6`
-      #
-      # - name: "Install tox in virtualenv"
-      #   run: |
-      #     ./TOX/bin/pip install tox
-
-      - name: "Setup project"
+      - name: "Create tox virtualenv"
         run: |
-          tox -c tox-py26.ini
+          virtualenv TOX --python=`which python2.6`
+
+      - name: "Install tox in virtualenv"
+        run: |
+          ./TOX/bin/pip install tox
 
       - name: "Run tests (Python 2.6)"
         run: |
-          tox -c tox-py26.ini
+          ./TOX/bin/tox -c tox-py26.ini
 
   run-tests:
     runs-on: ubuntu-latest
