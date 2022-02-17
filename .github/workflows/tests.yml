@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    matrix:
+      python_version:
+        - '2.6'
+        - '2.7'
+        - '3.5'
+        - '3.6'
+        - '3.7'
+        - '3.8'
+        - '3.9'
+        - '3.10'
+
+    name: "Python ${{ matrix.python_version }}"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+          architecture: x64
+      
+      - name: Create TOX virtualenv
+        run: |
+          pip install tox
+      
+      - name: Run tests (Python 2.6)
+        if: ${{ matrix.python_version == '2.6' }}
+        run: |
+          tox -c tox-py26.ini
+
+      - name: Run tests (Python 2.7+)
+        if: ${{ matrix.python_version != '2.6' }}
+        run: |
+          tox -v
