@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 4.0.0 (2022-02-17)
 
 * Switching from Travis/CircleCI for tests and CI to Github Actions (inspired by #24, thank you a lot, @Deuchnord).
