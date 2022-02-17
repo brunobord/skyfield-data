@@ -2,7 +2,11 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Switching from Travis/CircleCI for tests and CI to Github Actions (inspired by #24, thank you a lot, @Deuchnord).
+* Dropped support for Python 3.5.
+* Confirmed support for Python 3.10.
+* **NOTE**: Temporarily skipped Python 2.6 tests.
+* **IMPORTANT**: Temporarily skipped the Expiration Date test, in order to set-up the GH Action CI.
 
 ## 3.0.0 (2020-12-18)
 

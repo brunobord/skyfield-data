@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python_version:
+          # No Python 2.6 in Github Actions
+          # - '2.6'
+          - '2.7'
+          - '3.6'
+          - '3.7'
+          - '3.8'
+          - '3.9'
+          - '3.10'
+        include:
+          # No Python 2.6 in Github Actions
+          # - python_version: 2.6
+          #   tox-env: py26
+          - python_version: 2.7
+            tox-env: py27
+          - python_version: 3.6
+            tox-env: py36
+          - python_version: 3.7
+            tox-env: py37
+          - python_version: 3.8
+            tox-env: py38
+          - python_version: 3.9
+            tox-env: py39
+          - python_version: 3.10
+            tox-env: py310
+
+    name: "Python ${{ matrix.python_version }}"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python_version }}
+          architecture: x64
+
+      - name: Create TOX virtualenv
+        run: |
+          pip install tox
+
+      # No Python 2.6 in Github Actions
+      # - name: Run tests (Python 2.6)
+      #   if: ${{ matrix.python_version == '2.6' }}
+      #   run: |
+      #     tox -c tox-py26.ini -e py26
+
+      - name: Run tests (${{ matrix.python_version }})
+        run: |
+          tox -e ${{ matrix.tox-env }}
