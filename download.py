@@ -12,6 +12,7 @@ init()
 
 JPL = "ftp://ssd.jpl.nasa.gov/pub/eph/planets/bsp"
 IERS = "ftp://ftp.iers.org/products/eop/rapid/standard"
+IERS_WEB = "https://datacenter.iers.org/data/9"
 
 __DATA_PATH = abspath(join(dirname(__file__), "skyfield_data", "data"))
 
@@ -123,7 +124,7 @@ def main(args):
             "expiration_func": bsp_expiration,
         },
         "finals2000A.all": {
-            "server": IERS,
+            "server": IERS_WEB,
             "expiration_func": finals_expiration,
         }
     }

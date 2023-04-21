@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Upgraded `finals2002A.all` file, which has expired. Thanks a lot to @ReimarBauer for the PR, and @thierry-FreeBSD for the bug report.
 
 ## 4.0.0 (2022-02-17)
 
