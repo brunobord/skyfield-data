@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Dropped support for Python 3.6.
 
 ## 4.0.0 (2022-02-17)
 
