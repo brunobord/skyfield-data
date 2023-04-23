@@ -1,6 +1,6 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 5.0.0 (2023-04-23)
 
 * Upgraded `finals2002A.all` file, which has expired. Thanks a lot to @ReimarBauer for the PR, and @thierry-FreeBSD for the bug report.
 * Dropped support for Python 3.6.
