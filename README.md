@@ -101,7 +101,7 @@ make install-dev
 
 ### Python compatibility
 
-*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.7+ up to 3.10, to keep the same Python compatibility that `skyfield` has.
+*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.7+ up to 3.11, to keep the same Python compatibility that `skyfield` has.
 
 ### Hacking
 
