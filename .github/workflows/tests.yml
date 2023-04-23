@@ -16,7 +16,6 @@ jobs:
           # No Python 2.6 in Github Actions
           # - '2.6'
           - '2.7'
-          - '3.6'
           - '3.7'
           - '3.8'
           - '3.9'
@@ -27,8 +26,6 @@ jobs:
           #   tox-env: py26
           - python_version: 2.7
             tox-env: py27
-          - python_version: 3.6
-            tox-env: py36
           - python_version: 3.7
             tox-env: py37
           - python_version: 3.8
