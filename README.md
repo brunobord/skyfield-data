@@ -89,7 +89,7 @@ In order to trigger this warning, you can use the ``expiration_limit`` argument,
 
 ## Developers
 
-We assume that you'll be using a Python3.6+ version for all regular operations.
+We assume that you'll be using a Python3.7+ version for all regular operations.
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
 
@@ -101,7 +101,7 @@ make install-dev
 
 ### Python compatibility
 
-*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.5+ up to 3.9, to keep the same Python compatibility that `skyfield` has.
+*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.7+ up to 3.10, to keep the same Python compatibility that `skyfield` has.
 
 ### Hacking
 
@@ -115,7 +115,7 @@ To make a quick'n'dirty test, inside your "tox-ready" virtualenv, run:
 make test
 ```
 
-to launch the Python 2.7 and Python 3.5+ test jobs.
+to launch the Python 2.7 and Python 3.7+ test jobs.
 
 If you want to test your branch against Python 2.6, you'll have to setup a Python 2.6-ready tox environment, by doing something similar to:
 
