@@ -2,7 +2,7 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Upgraded `finals2002A.all` file, which has expired.
 
 ## 5.0.0 (2023-04-23)
 
