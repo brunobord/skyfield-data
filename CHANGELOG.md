@@ -1,6 +1,6 @@
 # Changelog for Skyfield Data
 
-## master (unreleased)
+## 6.0.0 (2024-06-23)
 
 * Upgraded `finals2002A.all` file, which has expired, thanks @matrss for the bug report (#36).
 
