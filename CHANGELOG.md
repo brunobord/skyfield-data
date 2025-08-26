@@ -1,5 +1,9 @@
 # Changelog for Skyfield Data
 
+## master (unreleased)
+
+Nothing here yet.
+
 ## 7.0.0 (2025-08-26)
 
 * Upgraded `finals2000A.all` file, which has expired, thanks @ReimarBauer for the reminder.
