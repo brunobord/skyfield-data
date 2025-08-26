@@ -21,6 +21,7 @@ jobs:
           - '3.10'
           - '3.11'
           - '3.12'
+          - '3.13'
         include:
           # No Python 2.6, 2.7 in Github Actions
           # - python_version: 2.6
@@ -37,6 +38,8 @@ jobs:
             tox-env: py311
           - python_version: 3.12
             tox-env: py312
+          - python_version: 3.13
+            tox-env: py313
 
     name: "Python ${{ matrix.python_version }}"
     steps:
