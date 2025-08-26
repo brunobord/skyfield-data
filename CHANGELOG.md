@@ -2,7 +2,8 @@
 
 ## master (unreleased)
 
-Nothing here yet.
+* Upgraded `finals2000A.all` file, which has expired, thanks @ReimarBauer for the reminder.
+* Dropped support for Python 3.7.
 
 ## 6.0.0 (2024-06-23)
 

@@ -17,7 +17,7 @@ Several issues are raised by these data files:
 
 |      File       |    Date    |
 |:---------------:|:----------:|
-| finals2000A.all | 2024-06-16 |
+| finals2000A.all | 2026-10-18 |
 |    de421.bsp    | 2053-10-08 |
 
 
@@ -89,7 +89,7 @@ In order to trigger this warning, you can use the ``expiration_limit`` argument,
 
 ## Developers
 
-We assume that you'll be using a Python3.7+ version for all regular operations.
+We assume that you'll be using a Python3.8+ version for all regular operations.
 
 We're providing a ``Makefile`` with basic targets to play around with the toolkit. use ``make help`` to get more details.
 
@@ -101,7 +101,7 @@ make install-dev
 
 ### Python compatibility
 
-*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.7+ up to 3.11, to keep the same Python compatibility that `skyfield` has. **Although**, recent changes in Github images have made it difficult to make sure that it's still compatible. We're sorry for the inconvenience.
+*Important:* This project is, and should stay compatible with Python 2.6, 2.7 and Python 3.8+ up to 3.11, to keep the same Python compatibility that `skyfield` has. **Although**, recent changes in Github images have made it difficult to make sure that it's still compatible. We're sorry for the inconvenience.
 
 ### Hacking
 
@@ -115,7 +115,7 @@ To make a quick'n'dirty test, inside your "tox-ready" virtualenv, run:
 make test
 ```
 
-to launch the Python 2.7 and Python 3.7+ test jobs.
+to launch the Python 2.7 and Python 3.8+ test jobs.
 
 If you want to test your branch against Python 2.6, you'll have to setup a Python 2.6-ready tox environment, by doing something similar to:
 
