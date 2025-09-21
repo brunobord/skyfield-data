@@ -1,0 +1,35 @@
+name: Auto update files
+
+on:
+  workflow_dispatch:
+  schedule:
+    cron:
+      - '0 12 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - run : |
+        python3 download.py
+    
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          title: Bump `de421.bsp`
+          commit-message: Bump `de421.bsp`
+          branch: feat/update/de421
+          add-paths: skyfield_data/data/de421.bsp
+          body: |
+            Synchronizing the `de421.bsp` file with its source.
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          title: Bump `finals2000A.all`
+          commit-message: Bump `finals2000A.all`
+          branch: feat/update/finals2000A
+          add-paths: skyfield_data/data/finals2000A.all
+          body: |
+            Synchronizing the `finals2000A.all` file with its source.
